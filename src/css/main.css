@@ -139,7 +139,7 @@ aside{
     top: 300px;
     z-index: 1000;
 }
-/*弹窗样式*/
+
 .reveal-modal-bg {
     position: fixed;
     height: 100%;
