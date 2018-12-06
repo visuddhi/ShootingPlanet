@@ -1,6 +1,6 @@
 # ShootingPlanet
 
-This is a shooting game platform via blockchain. Currently, it allows trades between players on the items they can use in the game.
+This is a demo of a shooting game platform via blockchain. Currently, it allows trades between players on the items they can use in the game. The project has been run on Ethereum test networks.
 
 Still a very early version, any suggestions, contributions are welcome!
 
