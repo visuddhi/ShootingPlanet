@@ -8,7 +8,7 @@ How to use it:
 
 1. Install Ganache, Truffle. And installing the Chrome extension Metamask is also highly recommended in order to enjoy the full functionality of this project.
 
-2. Clone the project, run "truffle compile" and "truffle migrate" in the main directory.
+2. Clone the project, run "truffle compile" and "truffle migrate" in the main directory. This builds and migrates the contracts.
 
 3. Run "npm run dev" to enjoy the game!
 
