@@ -1,0 +1,51 @@
+[
+  {
+    "id": 0,
+    "name": "Red",
+    "picture": "img/fighterAll.png",
+    "creator": "admin",
+    "price":0,
+    "address": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "id": 1,
+    "name": "Purple",
+    "picture": "img/fighterPurple.png",
+    "creator": "Ben",
+    "price":10,
+    "address": "0x742d603060672587dBcE1F76E2E762E4852f3b8D"
+  },
+  {
+    "id": 2,
+    "name": "Grey",
+    "picture": "img/fighterGrey.png",
+    "creator": "demon",
+    "price":30,
+    "address": "0x8afC3D142394ad892467602DA2c1853dF2e0c413"
+  },
+  {
+    "id": 3,
+    "name": "Reimu",
+    "picture": "img/Reimu.png",
+    "creator": "sunny",
+    "price":100,
+    "address": "0xE2269Cb0d01dfF42eBf4ecD0Cb43B2Ee2EeB27B6"
+  },
+  {
+    "id": 4,
+    "name": "Blue",
+    "picture": "img/fighterBlue.png",
+    "creator": "demon",
+    "price":40,
+    "address": "0xD1656889938cF0138ecB6BeaAF94eCfB27F5849f"
+  }
+  ,
+  {
+    "id": 5,
+    "name": "John",
+    "picture": "img/fighterJohn.png",
+    "creator": "admin",
+    "price":10000,
+    "address": "0x0000000000000000000000000000000000000000"
+  }
+]

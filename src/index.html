@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Shooting Planet</title>
+
+    <!-- Bootstrap -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.8.3/superagent.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    
+    <!-- Shooting Game head files -->
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/obj.css">
+	
+	<style type="text/css">
+    .imgDiv{width:260px;height:190px;border:1px solid #000;overflow:hidden;}
+    .imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+	</style>
+
+	<script src="js/lib.js"></script>
+
+
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">ShootingPlanet</h1>
+          <hr/>
+          <br/>
+        </div>
+      </div>
+
+    <div id="navigation"></div>        
+    <main role="main" class="container" style="margin-top:20px">
+        <div id="target1" style="display:none">
+
+          <div class="layout layout1">
+            <p class="currDifficult">Difficulty：<span class="currDiff"></span></p>
+            <h1 id="startBtn2" class="btn-style">Start Game</h1>
+            <h1 id="gameConfig" class="btn-style">Game Settings</h1>
+            <h1 id="readme" class="btn-style">Help</h1>
+        
+        
+            </div>
+            <div class="layout layout2">
+                <center>
+                    <h2>Game Settings</h2>
+                    <h3>Keyboard configurations</h3><br>
+                    <h3 class="keySet">　　Up　　　  　 Key:<span id="UPKeySet"></span></h3>
+                    <h3 class="keySet">　　Down　　　   Key:<span id="DNKeySet"></span></h3>
+                    <h3 class="keySet">　　Left　　　　 Key:<span id="LTKeySet"></span></h3>
+                    <h3 class="keySet">　　Right　　　　Key:<span id="RTKeySet"></span></h3>
+                    <h3 class="keySet">　　Low Speed　  Key:<span id="LSKeySet"></span></h3>
+                    <h3 class="keySet">　　Back to Default</h3>
+                    <h3>Adjust difficulty</h3>
+                    <span class="selectDiff" title="If you even cannot play this...">Monkey</span><span class="selectDiff" title="Well this is normal.">Human</span><span class="selectDiff" title="U sure?">Lunatic</span>
+                    <input type="hidden" id="difficult" value="Human">
+        
+                </center>
+        
+                <h1 class="returnMain btn-style">Return</h1>
+            </div>
+        
+            <!--Help-->
+            <div class="layout layout3">
+                <center><h2>Help</h2></center>
+                <p class="howToPlay">
+                1. Have fun！
+                <br> 
+                2. Blockchain integration (global leaderboard!) coming soon.
+                <br> 
+                3. More advanced game features coming...
+                </p>
+                <img id="control" src="img/operate.png"/>
+                <h1 class="returnMain btn-style">Return</h1>
+            </div>
+        
+        
+          <section id="gameScreen">
+            <div id="p_ship" class="player1">
+              <div id="laser"></div>
+              <div id="p_spot"></div>
+            </div>
+            <!-- <p class="bullet" style="top: 200px; left:200px"></p> -->
+          </section>
+        
+        
+          <aside>
+            <button id="startBtn" >Start Game</button><br>
+            <button id="endTest"  onclick="endGame()">End Game</button><br><br>
+        
+            <p>Life:<span id="hitCount">50</span></p><br>
+            <p>Graze:<span id="zijiPos">0</span></p><br>
+            <p>Score:<span id="score">0</span></p><br><br>
+            <p># of bullets: <span id="dmkcount">0</span></p>
+            <h4>ShootingPlanet ver 0.0, by visuddhi</h4>
+        
+            <p>Past Versions<br>
+            </p><br><br>
+        
+          </aside>
+        </div>
+
+
+    <div id="target2" style="display:none">
+        <h3>Current balance: <span class="black"><span id="balance"></span> SPcoin</span></h3>
+        <br><br>
+        <span id="status"></span>
+			<div id="fightersRow" class="row">
+            <!-- Load fighters on the market -->
+			</div>
+
+			<div id="fighterTemplate" style="display: none;">
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="panel panel-default panel-fighter">
+				<div class="panel-heading">
+					<h3 class="panel-title">Default</h3>
+				</div>
+				<div class="panel-body">
+					<img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">
+          <br/><br/>
+            <strong>ID</strong>: <span class="fighterID">0</span><br/>
+            <strong>Create by</strong>: <span class="creator">admin</span><br/>
+            <strong>Price (in SP coin)</strong>: <span class="price">0</span><br/>
+            <strong>Address</strong>: <span class="ETHaddress">0x0000000000000000000000000000000000000000</span><br/><br/>
+					<button class="btn btn-default btn-unlock" type="button" data-id="0">Buy</button>
+				</div>
+				</div>
+			</div>
+      </div>
+      </div>
+    
+
+    <div id="target3" style="display:none">
+
+      Choose your fighter from below!
+	  
+	  <img id="current fighter select" src="img/FighterAll.png"/>
+	  
+
+      <br>
+      <select id="SelectedFighter" class="browser-default custom-select">
+        <option value=0>Red(Default)</option>
+      </select>  
+
+      <br>
+      <button onclick="$.getJSON('../fighters.json',
+      		function(data) { 
+      		  document.getElementById('p_ship').style.backgroundImage='url(' + data[parseInt(document.getElementById('SelectedFighter').value)].picture + ')';  
+      		  }); "  class="btn btn-default" type="button">Confirm Change</button>
+    </div>
+   
+
+    <div id="target4" style="display:none">
+      Upload your own fighter below.
+      <br> <br>
+      <input type="file" onchange="previewImage(this,'d0','fighter_DIY')" />  
+      <div class="imgDiv" id="d0"></div>
+      <button onclick="$.getJSON('../fighters.json',
+      		function(data) { 
+      		  document.getElementById('p_ship').style.backgroundImage='url(' +  document.getElementById('fighter_DIY').src + ')' ;  
+      		  }); "  class="btn btn-default" type="button">Play Game with This One</button>
+    </div>
+
+     
+
+
+
+  <br>
+    
+
+		
+
+    </main>
+
+
+
+
+
+    
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/keymap.js"></script>
+    <script src="js/animateEasing.js"></script>
+    <script src="js/bulletClass.js"></script>
+    <script src="js/newscript.js"></script>
+    <script src="js/objAction.js"></script>
+    <script src="js/eventListener.js"></script>
+    <script src="js/modules.js"></script>
+    <script src="js/uploadpic.js"></script>
+    <script>  
+      document.getElementById("SelectedFighter").addEventListener("change",function () {
+      $.getJSON('../fighters.json',
+        function(data) { 
+        document.getElementById('current fighter select').src= data[parseInt(document.getElementById('SelectedFighter').value)].picture;
+        }); 
+      });
+    </script>
+  </body>
+
+
+</html>
